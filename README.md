@@ -8,7 +8,12 @@ Somewhere in your code:
 
     from fetch.shortcuts import fetch_data
 
-    data = fetch_data(station.data_url, station.data_type.name)
+    data = fetch_data(
+        station.data_url,
+        station.data_type.name,
+        time_format=station.data_time_format,
+        date_format=station.data_date_format,
+    )
     json_data = data.as_json()
 
 ## Submodules

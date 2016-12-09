@@ -1,3 +1,5 @@
-€}q(Ucore]q(UparseqUDataqUfetchqeUparsers.abstract]qUParserqaU	shortcuts]qU
-fetch_dataq	aUlabels]q
-UDATA_LABELSqaUfactory]qUparser_factoryqaUparsers.txtwd]qUTxtWdParserqau.
+€}q(Ucore]q(UDataqUDateTimeEncoderqUparseqUfetchqeUparsers.abstract]qUParserqaUrealtime.admin]q	(URegionAdminq
+UNetRequestAdminqU	DataAdminqUNationAdminqUProvinceAdminqUStationAdminqeU	shortcuts]qU
+fetch_dataqaUrealtime.views]q(UStationGraphJSONDataViewqU	FetchViewqUNetRequestViewqUStationViewqUStationIdViewqUNetViewqUJumbotronStationJsonViewqUStationRealtimeViewqUStationHistoricViewqUStationGraphViewqUNetRequestSentViewqUStationIdGraphViewqeUlabels]qUDATA_LABELSq aUfactory]q!Uparser_factoryq"aUrealtime.models.stations]q#(U
+NetRequestq$Uset_station_image_folderq%UHistoricDataq&U
+DataFormatq'UStationq(Uset_net_request_image_folderq)heUparsers.txtwd]q*UTxtWdParserq+au.
