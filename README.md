@@ -45,6 +45,10 @@ Parses the content of format type and retrieves a Data object
 - type: string
 Factory method which returns the appropriate parsing class given the content type
 
+### labels
+
+Defines the labels to be used as exported data keys in one place
+
 ### parsers.*
 
 All the parser classes, one file for each content type. Same interface, defined by `abstract.Parser`:
