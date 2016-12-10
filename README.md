@@ -6,7 +6,7 @@ Module used to fetch and parse station data from external urls.
 
 Somewhere in your code:
 
-    from fetch.shortcuts import fetch_data
+    from fetch_station_data.shortcuts import fetch_data
 
     data = fetch_data(
         station.data_url,
@@ -77,7 +77,7 @@ Create a virtualenv
 
 Install requirements
 
-    $ pip inatall -r fetch_station_data/requirements.txt
+    $ pip install -r fetch_station_data/requirements.txt
 
 Create a python file
 
