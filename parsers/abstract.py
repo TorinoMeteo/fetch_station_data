@@ -18,14 +18,14 @@ class Parser(object):
 
     def _clean_float(self, value):
 	try:
-        	aux = float(self.non_decimal.sub('', value))
+        	aux = round(float(self.non_decimal.sub('', value)),2)
 	except:
 		aux = None
 	return aux
 
     def _clean_temp(self, value):
 	try:
-	        aux = float(self.non_decimal.sub('', value))
+	        aux = round(float(self.non_decimal.sub('', value)),2)
 		if (aux > EX['TEMP']['MAX']) or (aux < EX['TEMP']['MIN']):
 			aux = None
 	except:
@@ -48,7 +48,7 @@ class Parser(object):
 
     def _clean_humidity(self, value):
 	try:
-	        aux = float(self.non_decimal.sub('', value))
+	        aux = round(float(self.non_decimal.sub('', value)),2)
 		if (aux > EX['HUMIDITY']['MAX']) or (aux < EX['HUMIDITY']['MIN']):
 			aux = None
 	except:
@@ -57,7 +57,7 @@ class Parser(object):
 
     def _clean_dew(self, value):
 	try:
-        	aux = float(self.non_decimal.sub('', value))
+        	aux = round(float(self.non_decimal.sub('', value)),2)
 		if (aux > EX['DEW']['MAX']) or (aux < EX['DEW']['MIN']):
 			aux = None
 	except:
@@ -66,7 +66,7 @@ class Parser(object):
 
     def _clean_pressure(self, value):
 	try:
-	        aux = float(self.non_decimal.sub('', value))
+	        aux = round(float(self.non_decimal.sub('', value)),2)
 		if (aux > EX['PRESSURE']['MAX']) or (aux < EX['PRESSURE']['MIN']):
 			aux = None
 	except:
@@ -75,7 +75,7 @@ class Parser(object):
 
     def _clean_wind(self, value):
 	try:
-	        aux = float(self.non_decimal.sub('', value))
+	        aux = round(float(self.non_decimal.sub('', value)),2)
 		if (aux > EX['WIND']['MAX']) or (aux < EX['WIND']['MIN']):
 			aux = None
 	except:
@@ -84,7 +84,7 @@ class Parser(object):
 
     def _clean_wind_dir(self, value):
         try:
-		aux = float(self.non_decimal.sub('', value))
+		aux = round(float(self.non_decimal.sub('', value)),2)
 	except:
 		try:
 			aux = EX['WIND_DIR']['TEXT'].index(str(value).rstrip()) * 22.5
@@ -94,7 +94,7 @@ class Parser(object):
 
     def _clean_rain(self, value):
 	try:
-	        aux = float(self.non_decimal.sub('', value))
+	        aux = round(float(self.non_decimal.sub('', value)),2)
 		if (aux > EX['RAIN']['MAX']) or (aux < EX['RAIN']['MIN']):
 			aux = None
 	except:
@@ -103,7 +103,7 @@ class Parser(object):
 
     def _clean_rain_rate(self, value):
 	try:
-	        aux = float(self.non_decimal.sub('', value))
+	        aux = round(float(self.non_decimal.sub('', value)),2)
 		if (aux > EX['RAIN_RATE']['MAX']) or (aux < EX['RAIN_RATE']['MIN']):
 			aux = None
 	except:

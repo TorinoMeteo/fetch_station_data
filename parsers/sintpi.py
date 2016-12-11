@@ -9,8 +9,8 @@ class SintPiParser(Parser):
 
     # line num: (label, clean)
     data_map = {
-        'last_measure_time': (DL['TIME'], 'time'),
-        'last_measure_time': (DL['DATE'], 'date'),
+        'measure_time': (DL['TIME'], 'time'),
+        'measure_date': (DL['DATE'], 'date'),
         'temp_out': (DL['TEMP'], 'temp'),
         'TempOutMax': (DL['TEMP_MAX'], 'temp'),
         'TempOutMin': (DL['TEMP_MIN'], 'temp'),
@@ -27,16 +27,16 @@ class SintPiParser(Parser):
         'wind_dir_ave': (DL['WIND_DIR_MAX'], 'wind_dir'),
         'rain': (DL['RAIN'], 'rain'),
         'rain_rate_1h': (DL['RAIN_RATE'], 'rain_rate'),
-	'rain_rate_24h': (DL['RAIN_RATE_MAX'], 'rain_rate'),
     }
 
     def parse(self, content):
 
         jsondata = json.loads(content)
-
-        data = {}
+        jsondata.update({'measure_time':jsondata['last_measure_time']})
+        jsondata.update({'measure_date':jsondata['last_measure_time']})
+	data = {}
         for k, i in self.data_map.iteritems():
-            value = jsondata[k]
+            value = str(jsondata[k])
             value = getattr(self, '_clean_%s' % i[1].lower())(value)
             data[i[0]] = value
         return data
