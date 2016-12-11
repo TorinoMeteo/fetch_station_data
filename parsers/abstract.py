@@ -1,5 +1,3 @@
-############## appunti per prox edit: aggiungere i try sulla converione a float per gestire il value error da file corroto ##################
-
 import re
 import datetime
 from ..settings import EXTREMES as EX
@@ -19,42 +17,68 @@ class Parser(object):
         raise NotImplementedError("Should have implemented this")
 
     def _clean_float(self, value):
-        aux = float(self.non_decimal.sub('', value))
+	try:
+        	aux = float(self.non_decimal.sub('', value))
+	except:
+		aux = None
 	return aux
 
     def _clean_temp(self, value):
-        aux = float(self.non_decimal.sub('', value))
-	if (aux > EX['TEMP']['MAX']) or (aux < EX['TEMP']['MIN']):
+	try:
+	        aux = float(self.non_decimal.sub('', value))
+		if (aux > EX['TEMP']['MAX']) or (aux < EX['TEMP']['MIN']):
+			aux = None
+	except:
 		aux = None
 	return aux
 
     def _clean_time(self, value):
-        return datetime.datetime.strptime(value.strip(), self.time_format).time() # noqa
+	try:
+	        aux = datetime.datetime.strptime(value.strip(), self.time_format).time() # noqa
+	except:
+		aux = None
+	return aux
 
     def _clean_date(self, value):
-        return datetime.datetime.strptime(value.strip(), self.date_format).date() # noqa
+	try:
+        	aux = datetime.datetime.strptime(value.strip(), self.date_format).date() # noqa
+	except:
+		aux = None
+	return aux
 
     def _clean_humidity(self, value):
-        aux = float(self.non_decimal.sub('', value))
-	if (aux > EX['HUMIDITY']['MAX']) or (aux < EX['HUMIDITY']['MIN']):
+	try:
+	        aux = float(self.non_decimal.sub('', value))
+		if (aux > EX['HUMIDITY']['MAX']) or (aux < EX['HUMIDITY']['MIN']):
+			aux = None
+	except:
 		aux = None
 	return aux
 
     def _clean_dew(self, value):
-        aux = float(self.non_decimal.sub('', value))
-	if (aux > EX['DEW']['MAX']) or (aux < EX['DEW']['MIN']):
+	try:
+        	aux = float(self.non_decimal.sub('', value))
+		if (aux > EX['DEW']['MAX']) or (aux < EX['DEW']['MIN']):
+			aux = None
+	except:
 		aux = None
 	return aux
 
     def _clean_pressure(self, value):
-        aux = float(self.non_decimal.sub('', value))
-	if (aux > EX['PRESSURE']['MAX']) or (aux < EX['PRESSURE']['MIN']):
+	try:
+	        aux = float(self.non_decimal.sub('', value))
+		if (aux > EX['PRESSURE']['MAX']) or (aux < EX['PRESSURE']['MIN']):
+			aux = None
+	except:
 		aux = None
 	return aux
 
     def _clean_wind(self, value):
-        aux = float(self.non_decimal.sub('', value))
-	if (aux > EX['WIND']['MAX']) or (aux < EX['WIND']['MIN']):
+	try:
+	        aux = float(self.non_decimal.sub('', value))
+		if (aux > EX['WIND']['MAX']) or (aux < EX['WIND']['MIN']):
+			aux = None
+	except:
 		aux = None
 	return aux
 
@@ -69,14 +93,20 @@ class Parser(object):
 	return aux
 
     def _clean_rain(self, value):
-        aux = float(self.non_decimal.sub('', value))
-	if (aux > EX['RAIN']['MAX']) or (aux < EX['RAIN']['MIN']):
+	try:
+	        aux = float(self.non_decimal.sub('', value))
+		if (aux > EX['RAIN']['MAX']) or (aux < EX['RAIN']['MIN']):
+			aux = None
+	except:
 		aux = None
 	return aux
 
     def _clean_rain_rate(self, value):
-        aux = float(self.non_decimal.sub('', value))
-	if (aux > EX['RAIN_RATE']['MAX']) or (aux < EX['RAIN_RATE']['MIN']):
+	try:
+	        aux = float(self.non_decimal.sub('', value))
+		if (aux > EX['RAIN_RATE']['MAX']) or (aux < EX['RAIN_RATE']['MIN']):
+			aux = None
+	except:
 		aux = None
 	return aux
 

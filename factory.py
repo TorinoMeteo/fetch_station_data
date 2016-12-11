@@ -14,3 +14,8 @@ def parser_factory(type):
             path % 'txtwd', __name__.rsplit('.', 1)[0]
         )
         return getattr(mod, 'TxtWdParser')
+    if type == 'SintPi':
+        mod = importlib.import_module(
+            path % 'sintpi', __name__.rsplit('.', 1)[0]
+        )
+        return getattr(mod, 'SintPiParser')
