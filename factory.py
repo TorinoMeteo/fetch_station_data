@@ -5,24 +5,13 @@ def parser_factory(type):
     """ Factory method to retrieve the parse class to be used with
         contents formatted as type
 
-        WTF! Why all the if conditions?
+        WTF! Why the whitelist?
         To avoid auto import of modules, security is serius business.
     """
     path = '.parsers.%s'
-    if type == 'txt-wd':
+    whitelist = ['txtwd', 'sintpi', 'clientraw', 'unito', ]
+    if type in whitelist:
         mod = importlib.import_module(
-            path % 'txtwd', __name__.rsplit('.', 1)[0]
+            path % type, __name__.rsplit('.', 1)[0]
         )
-        return getattr(mod, 'TxtWdParser')
-
-    if type == 'sintpi':
-        mod = importlib.import_module(
-            path % 'sintpi', __name__.rsplit('.', 1)[0]
-        )
-        return getattr(mod, 'SintPiParser')
-
-    if type == 'clientraw':
-        mod = importlib.import_module(
-            path % 'clientraw', __name__.rsplit('.', 1)[0]
-        )
-        return getattr(mod, 'ClientRawParser')
+        return getattr(mod, type[0].upper() + type[1:] + 'Parser')

@@ -26,7 +26,10 @@ class Data(dict):
     def __init__(self, *args, **kwargs):
         """ Just add datetime key, date + time"""
         super(Data, self).__init__(*args, **kwargs)
-        self[DL['DATETIME']] = datetime.combine(self[DL['DATE']], self[DL['TIME']])
+        try:
+            self[DL['DATETIME']] = datetime.combine(self[DL['DATE']], self[DL['TIME']]) # noqa
+        except:
+            self[DL['DATETIME']] = None
 
     def as_json(self):
         return json.dumps(self, cls=DateTimeEncoder)

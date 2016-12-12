@@ -1,11 +1,10 @@
-import os
 import json
 
 from .abstract import Parser
 from ..labels import DATA_LABELS as DL
 
 
-class SintPiParser(Parser):
+class SintpiParser(Parser):
 
     # line num: (label, clean)
     data_map = {
@@ -23,7 +22,7 @@ class SintPiParser(Parser):
         'PressureMin': (DL['PRESSURE_MIN'], 'pressure'),
         'wind_gust': (DL['WIND'], 'wind'),
         'wind_dir': (DL['WIND_DIR'], 'wind_dir'),
-	'winDayGustMax': (DL['WIND_MAX'], 'wind'),
+        'winDayGustMax': (DL['WIND_MAX'], 'wind'),
         'wind_dir_ave': (DL['WIND_DIR_MAX'], 'wind_dir'),
         'rain': (DL['RAIN'], 'rain'),
         'rain_rate_1h': (DL['RAIN_RATE'], 'rain_rate'),
@@ -32,9 +31,9 @@ class SintPiParser(Parser):
     def parse(self, content):
 
         jsondata = json.loads(content)
-        jsondata.update({'measure_time':jsondata['last_measure_time']})
-        jsondata.update({'measure_date':jsondata['last_measure_time']})
-	data = {}
+        jsondata.update({'measure_time': jsondata['last_measure_time']})
+        jsondata.update({'measure_date': jsondata['last_measure_time']})
+        data = {}
         for k, i in self.data_map.iteritems():
             value = str(jsondata[k])
             value = getattr(self, '_clean_%s' % i[1].lower())(value)
