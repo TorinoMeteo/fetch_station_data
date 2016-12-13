@@ -106,5 +106,5 @@ You're ready to go
 
 ### How to add a parser
 
-- add the 'type' condition in the `fetch.factory.parser_factory` function
-- add a file in the `fetch.parsers` module implementing the `fetch.parsers.abstract.Parser` interface
+- add the the new format to the whitelist in the `fetch.factory.parser_factory` function
+- add a file in the `fetch.parsers` module implementing the `fetch.parsers.abstract.Parser` interface (if the whitelist item is 'bla', the module should be 'bla.py' and the class 'BlaParser')
