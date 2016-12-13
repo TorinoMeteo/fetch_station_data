@@ -48,7 +48,8 @@ class TxtwdParser(Parser):
 
         data = {}
         for k, i in self.data_map.iteritems():
-            value = lines[k]
+            # remove html tags
+            value = re.sub('<[^<]+?>', '', lines[k]).rstrip()
             value = self._clean(value, i[1])
             data[i[0]] = value
 
