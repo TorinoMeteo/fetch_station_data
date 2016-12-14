@@ -1,4 +1,5 @@
 import os
+import re
 
 from .abstract import Parser
 from ..labels import DATA_LABELS as DL
@@ -45,7 +46,7 @@ class TxtwdParser(Parser):
 
     def parse(self, content):
         lines = content.split(os.linesep)
-
+        
         data = {}
         for k, i in self.data_map.iteritems():
             # remove html tags

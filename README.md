@@ -11,8 +11,8 @@ Somewhere in your code:
     data = fetch_data(
         station.data_url,
         station.data_type.name,
-        time_format=station.data_time_format,
-        date_format=station.data_date_format,
+        time_format=station.data_time_format, #string or tuple for multiple time format
+        date_format=station.data_date_format, #string or tuple for multiple date format
     )
     json_data = data.as_json()
 

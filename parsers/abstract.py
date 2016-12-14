@@ -1,5 +1,6 @@
 import re
 import datetime
+
 from ..settings import EXTREMES as EX
 
 
@@ -11,7 +12,7 @@ class Parser(object):
     non_decimal = re.compile(r'[^\d.-]+')
 
     def __init__(self, **kwargs):
-        self.time_format = kwargs.get('time_format') or '%H:%M'
+        self.time_format = kwargs.get('time_format') or ('%H:%M',)
         self.date_format = kwargs.get('date_format') or '%d/%m/%Y'
 
     def parse(self, content):
@@ -51,10 +52,23 @@ class Parser(object):
         return self._to_float_extremes(value, 'temp')
 
     def _clean_time(self, value):
-        return datetime.datetime.strptime(value.strip(), self.time_format).time() # noqa
+        if not isinstance(self.time_format, tuple):
+            self.time_format = (self.time_format,)
+
+        for fmt in self.time_format:
+            try:
+                return datetime.datetime.strptime(value.strip(), fmt).time() # noqa
+            except:
+                pass
 
     def _clean_date(self, value):
-        return datetime.datetime.strptime(value.strip(), self.date_format).date() # noqa
+        if not isinstance(self.date_format, tuple):
+            self.date_format = (self.date_format,)
+        for fmt in self.date_format:
+            try:
+                return datetime.datetime.strptime(value.strip(), fmt).date() # noqa
+            except:
+                pass
 
     def _clean_humidity(self, value):
         return self._to_float_extremes(value, 'humidity')
