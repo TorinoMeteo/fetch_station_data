@@ -52,7 +52,7 @@ class Parser(object):
         return self._to_float_extremes(value, 'temp')
 
     def _clean_time(self, value):
-        if not isinstance(self.time_format, tuple):
+        if isinstance(self.time_format, basestring):
             self.time_format = (self.time_format,)
 
         for fmt in self.time_format:
@@ -62,7 +62,7 @@ class Parser(object):
                 pass
 
     def _clean_date(self, value):
-        if not isinstance(self.date_format, tuple):
+        if isinstance(self.date_format, basestring):
             self.date_format = (self.date_format,)
         for fmt in self.date_format:
             try:
