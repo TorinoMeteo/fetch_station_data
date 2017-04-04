@@ -1,5 +1,6 @@
 import re
 import datetime
+import dateutil.parser
 
 from ..settings import EXTREMES as EX
 
@@ -54,21 +55,32 @@ class Parser(object):
     def _clean_time(self, value):
         if isinstance(self.time_format, basestring):
             self.time_format = (self.time_format,)
-
-        for fmt in self.time_format:
+        for i, fmt in enumerate(self.time_format):
             try:
                 return datetime.datetime.strptime(value.strip(), fmt).time() # noqa
             except:
-                pass
+		if i == len(self.time_format) -1:
+		    try:
+			return dateutil.parser.parse(value.strip())
+		    except:
+			pass
+		else:
+                    pass
 
     def _clean_date(self, value):
         if isinstance(self.date_format, basestring):
             self.date_format = (self.date_format,)
-        for fmt in self.date_format:
+        for i, fmt in enumerate(self.date_format):
             try:
                 return datetime.datetime.strptime(value.strip(), fmt).date() # noqa
             except:
-                pass
+		if i == len(self.date_format) -1:
+		    try:
+			return dateutil.parser.parse(value.strip())
+		    except:
+			pass
+		else:
+                    pass
 
     def _clean_humidity(self, value):
         return self._to_float_extremes(value, 'humidity')
