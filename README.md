@@ -90,7 +90,7 @@ With the following content:
 
     data = fetch_data(
         'http://danielemeteo.altervista.org/wx.txt',
-        'txt-wd',
+        'txtwd',
         time_format='%H:%M %p',
         date_format='%d/%m/%y',
     )
