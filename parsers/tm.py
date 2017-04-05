@@ -46,13 +46,11 @@ class TmParser(Parser):
     }
 
     def parse(self, content):
-	aux = re.sub(r"(\s+)",r"",content)
+	aux = re.sub(r"[\r\n\t\f\v]",r"",content)
 	aux = re.sub(r",}",r"}",aux)
-	print aux 
 	jsondata = json.loads(aux)
         jsondata.update({'measure_time': jsondata['datetime']})
         jsondata.update({'measure_date': jsondata['datetime']})
-
         data = {}
         for k, i in self.data_map.iteritems():
 	    try:
@@ -60,6 +58,5 @@ class TmParser(Parser):
         	value = self._clean(value, i[1])
 	    except:
 		value = None
-        	
 	    data[i[0]] = value
         return data

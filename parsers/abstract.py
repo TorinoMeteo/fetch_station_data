@@ -57,11 +57,15 @@ class Parser(object):
             self.time_format = (self.time_format,)
         for i, fmt in enumerate(self.time_format):
             try:
-                return datetime.datetime.strptime(value.strip(), fmt).time() # noqa
+		aux = datetime.datetime.strptime(value.strip(), fmt).time() # noqa
+#		print aux
+		return aux
             except:
 		if i == len(self.time_format) -1:
 		    try:
-			return dateutil.parser.parse(value.strip())
+			aux = dateutil.parser.parse(value.strip()).time()
+#			print aux
+			return aux
 		    except:
 			pass
 		else:
@@ -72,11 +76,15 @@ class Parser(object):
             self.date_format = (self.date_format,)
         for i, fmt in enumerate(self.date_format):
             try:
-                return datetime.datetime.strptime(value.strip(), fmt).date() # noqa
+                aux = datetime.datetime.strptime(value.strip(), fmt).date() # noqa
+#		print aux
+		return aux
             except:
 		if i == len(self.date_format) -1:
 		    try:
-			return dateutil.parser.parse(value.strip())
+			aux = dateutil.parser.parse(value.strip()).date()
+#			print aux
+			return aux
 		    except:
 			pass
 		else:
