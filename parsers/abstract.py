@@ -24,6 +24,9 @@ class Parser(object):
         """ String to float rounded with precision
             Add here logic to support internalization
         """
+        if isinstance(value, float):
+            return round(value, precision)
+
         value = value.replace(',', '.')
         return round(float(self.non_decimal.sub('', value)), precision)
 
